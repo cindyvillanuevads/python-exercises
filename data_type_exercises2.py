@@ -17,7 +17,7 @@ type(6 % 4)
 # string
 type(type(6 % 4))
 
-#  3 + 4 is 7
+#  Error beause + 
 '3 + 4 is ' + 3 + 4
 
 # False
@@ -29,7 +29,7 @@ type(type(6 % 4))
 # False
 True == 'True'
 
-# False
+# True
 5 >= -5
 
 # True
@@ -68,6 +68,6 @@ True or "42"
 #true
 [] + [] == []
 
-#
+# error
 {} + {}
 
