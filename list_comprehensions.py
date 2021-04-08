@@ -27,57 +27,95 @@ uppercased_fruits
 # Exercise 2
 #  - create a variable named capitalized_fruits and use list comprehension syntax to produce output like ['Mango', 'Kiwi', 'Strawberry', etc...]
 
-capitalized_fruits =[fruit.title() for fruit in fruits] #using title() capitalized each word (Mandarin Orange')
+capitalized_fruits =[fruit.title() for fruit in fruits] #using title() capitalize each word (Mandarin Orange')
 capitalized_fruits
 
-capitalized_fruits =[fruit.capitalize() for fruit in fruits] # using capitalize() capitalized the first word  (Mandarin orange')
+capitalized_fruits =[fruit.capitalize() for fruit in fruits] # using capitalize() capitalize the first word  (Mandarin orange')
 capitalized_fruits
 
 
 # Exercise 3 
 # - Use a list comprehension to make a variable named fruits_with_more_than_two_vowels. Hint: You'll need a way to check if something is a vowel.
 
+#  how many vowels are in a sttring
+ca = 'Cindy'
+len([let for let in ca if let in 'aeiou'])
+
+y = [let for let in ca if let in 'aeiou']
+y
+
+ca = 'dgfghsagvghkdva'
+x = len([let for let in ca if let in 'aeiou'])
+x 
+
+fruits_with_more_than_two_vowels= [fruit for fruit in fruits if len([let for let in fruit if let in 'aeiou'])> 2]
+fruits_with_more_than_two_vowels 
+
+
+
 # Exercise 4 
 # - make a variable named fruits_with_only_two_vowels. The result should be ['mango', 'kiwi', 'strawberry']
-
+fruits_with_only_two_vowels = [fruit for fruit in fruits if len([let for let in fruit if let in 'aeiou'])== 2]
+fruits_with_only_two_vowels
 # Exercise 5 
 # - make a list that contains each fruit with more than 5 characters
-
+nlist = [fruit for fruit in fruits if len(fruit) > 5 ]
+nlist 
 # Exercise 6 
 # - make a list that contains each fruit with exactly 5 characters
-
+nlist = [fruit for fruit in fruits if len(fruit) == 5 ]
+nlist 
 # Exercise 7 
 # - Make a list that contains fruits that have less than 5 characters
-
+nlist = [fruit for fruit in fruits if len(fruit) < 5 ]
+nlist 
 # Exercise 8 
 # - Make a list containing the number of characters in each fruit. Output would be [5, 4, 10, etc... ]
-
+nlist = [len(fruit) for fruit in fruits ]
+nlist 
 # Exercise 9 
 # - Make a variable named fruits_with_letter_a that contains a list of only the fruits that contain the letter "a"
-
+fruits_with_letter_a = [fruit for fruit in fruits if x for fruit in "a"]
+fruits_with_letter_a
 # Exercise 10 
 # - Make a variable named even_numbers that holds only the even numbers 
-
+even_numbers = [number for number in numbers if number % 2 ==0 ]
+even_numbers 
 # Exercise 11 
 # - Make a variable named odd_numbers that holds only the odd numbers
-
+odd_numbers = [number for number in numbers if number % 2 != 0 ]
+odd_numbers
 # Exercise 12 
 # - Make a variable named positive_numbers that holds only the positive numbers
-
+positive_numbers = [number for number in numbers if number > 0 ]
+positive_numbers
 # Exercise 13 
 # - Make a variable named negative_numbers that holds only the negative numbers
-
+negative_numbers = [number for number in numbers if number < 0 ]
+negative_numbers
 # Exercise 14 
 #-  use a list comprehension w/ a conditional in order to produce a list of numbers with 2 or more numerals
-
+nlist = [number for number in numbers if number >9 or number <-9]
+nlist 
 # Exercise 15 
 # - Make a variable named numbers_squared that contains the numbers list with each element squared. Output is [4, 9, 16, etc...]
+numbers_squared = [number*number for number in numbers ]
+numbers_squared 
+
+numbers_squared = [number**2 for number in numbers ]
+numbers_squared 
 
 # Exercise 16 
 # - Make a variable named odd_negative_numbers that contains only the numbers that are both odd and negative.
+odd_negative_numbers = [number for number in numbers if number % 2 != 0 and number < 0]
+odd_negative_numbers
 
 # Exercise 17 
 # - Make a variable named numbers_plus_5. In it, return a list containing each number plus five. 
+numbers_plus_5 = [number+5  for number in numbers ]
+numbers_plus_5
+
+
 
 # BONUS Make a variable named "primes" that is a list containing the prime numbers in the numbers list. 
 # *Hint* you may want to make or find a helper function that determines if a given number is prime or not.
