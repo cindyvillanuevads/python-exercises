@@ -326,8 +326,8 @@ books = [
     'Genre': 'Self-help book'
     },
     {'Title': "The Shack",
-    'Author': '  William P. Young',
-    'Genre': ' Novel, Thriller, Suspense, Religious Fiction'
+    'Author': 'William P. Young',
+    'Genre': 'Novel'
     }
 ]
 books[0]['Title']
@@ -343,4 +343,13 @@ for book in books:
         print(key,' : ', book[key])
     print('--------')
 
-option = input('Please choose a genre to give you the titles of the books that we have')
+option = input('Please choose a genre to give you the titles of the books that we have: ')
+# books[0]['Genre']
+x=0
+for book in books:
+    if option.lower() == book['Genre'].lower():
+        print(book['Title'])
+        x+=1
+if x == 0:
+     print("No books in that genre")
+
