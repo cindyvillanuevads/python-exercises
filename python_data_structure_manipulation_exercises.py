@@ -120,7 +120,7 @@ students = [
 # 1.How many students are there?
 
 # we have a list of diccionaries.
-# every diccionary respresents a student with his/her information.
+# every diccionary represents a student with his/her information.
 # we can use len  to get the length of our list
 total= len(students)
 print('Total of students', total)
@@ -128,7 +128,7 @@ print('Total of students', total)
 # How many students prefer light coffee? For each type of coffee roast?
 
 # we need to count when "coffee_preference" ="light",
-#that means we need to acces every diccionary.
+#that means we need to access every diccionary.
 x=0
 for student in students:
     if student["coffee_preference"] == 'light':
@@ -140,7 +140,7 @@ print('Students that prefer light coffee: ',x, "students" )
 # How many types of each pet are there?
 
 
-# how to acces to asingle  the kewy that we need. 
+# how to acces to asingle  the key that we need. 
 (students[0]["pets"][0]['species'])
  
  # pets is  a list of dictionaries
@@ -164,12 +164,52 @@ print('Dog:   ', dog)
 print('Horse: ', horse)
 
 
-    
-
 
 # How many grades does each student have? Do they all have the same number of grades?
+# how can we acces to the fist student grades:
+print(students[0]["grades"])
+
+# now lets print each grades for each student (this is only yo show how to access)
+for student in students:
+    print(student['grades'])
+   
+
+# grades are a list. so we can use len() to get how many grades a student has
+len((student['grades']))
+
+# now lets do it for each student with a loop
+for student in students:
+    no_grades = len((student['grades']))
+    print(student["student"],'  has ', no_grades, ' grades')
+
 # What is each student's grade average?
+# how can we acces to the fist student grades:
+print(students[0]["grades"])
+
+# "grades" is  a list. calculate avg = sum of grades / how many grades.
+# sum (student["grades"]) / len(student["grades"])
+
+for student in students:
+    average =  sum (student["grades"]) / len(student["grades"])
+    print(student["student"],' grade average:  ', average)
+
+
 # How many pets does each student have?
+
+# how can we acces to the fist student "pets": student["pets"]
+for student in students:
+    no_pets =  len(student["pets"])
+    if no_pets == 0:
+        print(student["student"], ' has no pets')
+    elif no_pets == 1:
+        print(student["student"], ' has only 1 pet')
+    else:
+        print(student["student"], ' has', no_pets,' pets')
+
+
+
+
+
 # How many students are in web development? data science?
 # What is the average number of pets for students in web development?
 # What is the average pet age for students in data science?
