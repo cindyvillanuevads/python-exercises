@@ -125,7 +125,7 @@ students = [
 total= len(students)
 print('Total of students', total)
 
-# How many students prefer light coffee? For each type of coffee roast?
+#2. How many students prefer light coffee? For each type of coffee roast?
 
 # we need to count when "coffee_preference" ="light",
 #that means we need to access every diccionary.
@@ -137,7 +137,7 @@ for student in students:
 print('Students that prefer light coffee: ',x, "students" )
 
 
-# How many types of each pet are there?
+# 3.How many types of each pet are there?
 
 
 # how to acces to asingle  the key that we need. 
@@ -165,7 +165,7 @@ print('Horse: ', horse)
 
 
 
-# How many grades does each student have? Do they all have the same number of grades?
+# 4.How many grades does each student have? Do they all have the same number of grades?
 # how can we acces to the fist student grades:
 print(students[0]["grades"])
 
@@ -230,11 +230,95 @@ print('Students in Web Development: ',wd)
 print('Other: ', other)
 
 
-
-
 # What is the average number of pets for students in web development?
+x=0
+age_pets = 0
+for student in students:
+    if student["course"] == 'web development':
+        age_pets = age_pets + len(student["pets"])
+        x += 1
+average = no_pets / x
+print("The average number of pets for students in web development is: ", average)
+
 # What is the average pet age for students in data science?
+
+x=0
+no_pets = 0
+for student in students:
+    if student["course"] == 'data science':
+        no_pets = no_pets + len(student["pets"])
+        x += 1
+average = no_pets / x
+print("The average number of pets for students in Data Science is: ", average)
+
+
+
 # What is most frequent coffee preference for data science students?
+
+# first I calculate how many students prefer each coffe
+dark=0
+med= 0
+light =0
+for student in students:
+    if student["course"] == 'data science':
+        if student["coffee_preference"] == 'light':
+            light += 1
+        elif student["coffee_preference"] == 'medium':
+            med +=1
+        else:
+            dark +=1
+        no_pets = no_pets + len(student["pets"])
+        x += 1
+##  I create a list of diccionaries  with the information. but this was is long
+"""
+pref = []  
+pref =[
+{
+    "coffe":"dark",
+    "No_students": dark
+},
+{
+    "coffe":"medium",
+    "No_students": med
+},
+{
+    "coffe":"light",
+    "No_students": light
+}
+]
+f= 0 
+freq = {}
+  
+# with this loop I compare each diccionary and freq has the diccionary with max number
+for cof in pref:
+    n = int(cof["No_students"])
+    if n > f:
+        f = n
+        freq = cof
+
+print("The most frequent coffee preference for data science students is: ", freq["coffe"])
+"""
+
+# better  way
+if dark > med > light:
+    print("The most frequent coffee preference for data science students is:  Dark")
+elif  med > dark > light:
+    print("The most frequent coffee preference for data science students is:  Medium")
+else:
+    print("The most frequent coffee preference for data science students is:  Light")
+
+#print("The average number of pets for students in Data Science is: ", average)
+
+x=0
+no_pets = 0
+for student in students:
+    if student["course"] == 'data science':
+        no_pets = no_pets + len(student["pets"])
+        x += 1
+average = no_pets / x
+print("The average number of pets for students in Data Science is: ", average)
+
+
 # What is the least frequent coffee preference for web development students?
 # What is the average grade for students with at least 2 pets?
 # How many students have 3 pets?
