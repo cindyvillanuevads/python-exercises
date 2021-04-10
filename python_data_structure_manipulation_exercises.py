@@ -196,7 +196,9 @@ for student in students:
 
 # How many pets does each student have?
 
-# how can we acces to the fist student "pets": student["pets"]
+# how can we acces to the fist student "pets":
+# sutdent= students[0].
+# so student["pets"] has the values that we need 
 for student in students:
     no_pets =  len(student["pets"])
     if no_pets == 0:
@@ -208,9 +210,28 @@ for student in students:
 
 
 
-
-
 # How many students are in web development? data science?
+#first solve only for first item from the list
+# sutdent= students[0].
+# so student["course"] has the values that we need 
+ds=0
+wd=0
+other =0
+for student in students:
+    if student["course"] == 'data science':
+        ds+=1
+    elif student["course"] == 'web development':
+        wd+=1
+    else:
+        other += 1
+
+print('Students in Data Science: ', ds)
+print('Students in Web Development: ',wd)
+print('Other: ', other)
+
+
+
+
 # What is the average number of pets for students in web development?
 # What is the average pet age for students in data science?
 # What is most frequent coffee preference for data science students?
