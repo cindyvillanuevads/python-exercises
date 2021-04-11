@@ -130,11 +130,20 @@ print('Total of students', total)
 # we need to count when "coffee_preference" ="light",
 #that means we need to access every diccionary.
 x=0
+y=0
+z=0
 for student in students:
     if student["coffee_preference"] == 'light':
         x+= 1
+    if student["coffee_preference"] == 'medium':
+        y += 1
+    else:
+        z += 1
+
 
 print('Students that prefer light coffee: ',x, "students" )
+print('Students that prefer medium coffee: ',y, "students" )
+print('Students that prefer dark coffee: ',z, "students" )
 
 
 # 3.How many types of each pet are there?
@@ -182,7 +191,7 @@ for student in students:
     no_grades = len((student['grades']))
     print(student["student"],'  has ', no_grades, ' grades')
 
-# What is each student's grade average?
+# 5.What is each student's grade average?
 # how can we acces to the fist student grades:
 print(students[0]["grades"])
 
@@ -194,7 +203,7 @@ for student in students:
     print(student["student"],' grade average:  ', average)
 
 
-# How many pets does each student have?
+# 6. How many pets does each student have?
 
 # how can we acces to the fist student "pets":
 # sutdent= students[0].
@@ -210,7 +219,8 @@ for student in students:
 
 
 
-# How many students are in web development? data science?
+# 7. How many students are in web development? data science?
+
 #first solve only for first item from the list
 # sutdent= students[0].
 # so student["course"] has the values that we need 
@@ -230,7 +240,7 @@ print('Students in Web Development: ',wd)
 print('Other: ', other)
 
 
-# What is the average number of pets for students in web development?
+# 8. What is the average number of pets for students in web development?
 x=0
 age_pets = 0
 for student in students:
@@ -240,20 +250,23 @@ for student in students:
 average = no_pets / x
 print("The average number of pets for students in web development is: ", average)
 
-# What is the average pet age for students in data science?
+# 9.What is the average pet age for students in data science?
 
 x=0
-no_pets = 0
+pets = 0
 for student in students:
     if student["course"] == 'data science':
-        no_pets = no_pets + len(student["pets"])
-        x += 1
-average = no_pets / x
-print("The average number of pets for students in Data Science is: ", average)
+        lon = len(student["pets"])
+        if lon > 0:
+            for n in range (lon):
+                pets = pets + student["pets"][n]["age"]
+                x += 1
+average = pets / x
+print("The average pet age for students in Data Science is: ", average)
 
 
 
-# What is most frequent coffee preference for data science students?
+# 10.What is most frequent coffee preference for data science students?
 
 # first I calculate how many students prefer each coffe
 dark=0
@@ -267,8 +280,7 @@ for student in students:
             med +=1
         else:
             dark +=1
-        no_pets = no_pets + len(student["pets"])
-        x += 1
+       
 ##  I create a list of diccionaries  with the information. but this was is long
 """
 pref = []  
@@ -319,13 +331,62 @@ average = no_pets / x
 print("The average number of pets for students in Data Science is: ", average)
 
 
-# What is the least frequent coffee preference for web development students?
-# What is the average grade for students with at least 2 pets?
-# How many students have 3 pets?
-# What is the average grade for students with 0 pets?
-# What is the average grade for web development students? data science students?
-# What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
-# What is the average number of pets for medium coffee drinkers?
-# What is the most common type of pet for web development students?
-# What is the average name length?
-# What is the highest pet age for light coffee drinkers?
+# 11. What is the least frequent coffee preference for web development students?
+
+dark=0
+med= 0
+light =0
+for student in students:
+    if student["course"] == 'web development':
+        if student["coffee_preference"] == 'light':
+            light += 1
+        elif student["coffee_preference"] == 'medium':
+            med +=1
+        else:
+            dark +=1
+
+if dark < med < light:
+    print("The least frequent coffee preference for web development is:  Dark")
+elif  med < dark < light:
+    print("The least frequent coffee preference for web development is:  Medium")
+else:
+    print("The least frequent coffee preference for web development is:  Light")
+
+
+# 12.What is the average grade for students with at least 2 pets?
+
+for student in students:
+    no_pets =  len(student["pets"])
+    if no_pets >= 2:
+        average =  sum (student["grades"]) / len(student["grades"])
+        print("Average grade for students with at least 2 pets")
+        print(student["student"],' grade average:  ', average)
+
+
+# 13. How many students have 3 pets?
+x=0
+for student in students:
+    no_pets =  len(student["pets"])
+    if no_pets == 3:
+        x += 1
+
+print("The total of students that have 3 pets:", x)
+
+
+
+# 14. What is the average grade for students with 0 pets?
+grades=[]
+x=0
+for student in students:
+    no_pets =  len(student["pets"])
+    if no_pets == 0:
+         grades = grades + student["grades"]       
+average = sum(grades) / len(grades)
+print("The average grade for students with 0 pets", average)
+
+# 15. What is the average grade for web development students? data science students?
+# 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+# 17. What is the average number of pets for medium coffee drinkers?
+# 18. What is the most common type of pet for web development students?
+# 19. What is the average name length?
+# 20. What is the highest pet age for light coffee drinkers?
