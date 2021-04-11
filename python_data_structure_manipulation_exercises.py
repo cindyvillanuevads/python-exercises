@@ -376,7 +376,6 @@ print("The total of students that have 3 pets:", x)
 
 # 14. What is the average grade for students with 0 pets?
 grades=[]
-x=0
 for student in students:
     no_pets =  len(student["pets"])
     if no_pets == 0:
@@ -385,8 +384,50 @@ average = sum(grades) / len(grades)
 print("The average grade for students with 0 pets", average)
 
 # 15. What is the average grade for web development students? data science students?
+
+grades_wd =[]
+grades_ds=[]
+for student in students:
+    if student["course"] == 'web development':
+        grades_wd = grades_wd + student["grades"]
+    else:
+        grades_ds = grades_ds +student["grades"]
+average_ds = sum(grades_ds) / len(grades_ds)     
+average_wd = sum(grades_wd) / len(grades_wd)
+print("The average grade for Web Development students is: ", average_wd)
+print("The average grade for Data Science students is: ", average_ds)
+
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+# first we know that "grades" is a list, in a list we can use max() for a highest grade and min() for the lowest grade
+#we need to create a list that has all the grades for the dark coffee drinkers
+grades = []
+for student in students:
+    if student["coffee_preference"] == "dark":
+        grades += student["grades"]
+aver_range = max(grades) - min(grades)
+print(max(grades))
+print(min(grades))
+print("The average range for dark coffee drinkers is:", aver_range)
+
 # 17. What is the average number of pets for medium coffee drinkers?
+x=0
+pets = []
+
+for student in students:
+    if student["coffee_preference"] == "medium":
+        x = len(student["pets"])
+        pets.append(x)
+print("************************************")
+print("   ")
+print("17. The average number of pets for medium coffee drinkers is:", sum(pets) / len(pets))
+
 # 18. What is the most common type of pet for web development students?
+"""
+Counter(words).most_common(10)
+
+for student in students:
+    if student["course"] == "web development":
+        Counter(student["pets"])
+"""
 # 19. What is the average name length?
 # 20. What is the highest pet age for light coffee drinkers?
