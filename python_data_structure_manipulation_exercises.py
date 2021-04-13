@@ -422,6 +422,8 @@ print("   ")
 print("17. The average number of pets for medium coffee drinkers is:", sum(pets) / len(pets))
 
 # 18. What is the most common type of pet for web development students?
+
+from collections import Counter
 """
 Counter(words).most_common(10)
 
@@ -430,4 +432,12 @@ for student in students:
         Counter(student["pets"])
 """
 # 19. What is the average name length?
+len_list = []
+for student in students:
+    len_name = len(student["student"])
+    len_list.append(len_name)
+print(len_list)
+
+print("The")
+
 # 20. What is the highest pet age for light coffee drinkers?
