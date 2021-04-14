@@ -153,34 +153,57 @@ print('Students that prefer dark coffee: ',z, "students" )
 (students[0]["pets"][0]['species'])
  
  # pets is  a list of dictionaries
-type(students[0]["pets"])
-cat=0
-dog=0
-horse =0
+# type(students[0]["pets"])
+# cat=0
+# dog=0
+# horse =0
+# for student in students:
+#     nlist = student["pets"]
+#     if len(nlist)> 0:
+#         for x in range(len(nlist)):
+#             if nlist[x]['species'] == "cat":
+#                 cat +=1 
+#             elif nlist[x]['species'] == "dog":
+#                 dog +=1
+#             else:
+#                 horse +=1
+# print(' Pet types:')
+# print('Cat:   ', cat)
+# print('Dog:   ', dog)
+# print('Horse: ', horse)
+
+
+#***** other way ******
+
+# list all the dicc of pets 
+p_list = []
 for student in students:
-    nlist = student["pets"]
-    if len(nlist)> 0:
-        for x in range(len(nlist)):
-            if nlist[x]['species'] == "cat":
-                cat +=1 
-            elif nlist[x]['species'] == "dog":
-                dog +=1
-            else:
-                horse +=1
-print(' Pet types:')
-print('Cat:   ', cat)
-print('Dog:   ', dog)
-print('Horse: ', horse)
-
-
+     for pet in student["pets"]:
+             p_list.append(pet)
+# list only the names of the pets
+new_list=[]
+for l in p_list:
+    new_list.append(l["species"])
+# makes a new dicc of the counts of each pet
+p_counts ={}
+for p in new_list:
+    if p not in p_counts.keys():
+        p_counts[p] = 1
+    else:
+        p_counts[p] = p_counts[p] + 1
+# get the key that has  the max counts
+for k,v in p_counts.items():
+    if v == max(p_counts.values()):
+        common_pet = k
+print("How many types of each pet are there", p_counts)
 
 # 4.How many grades does each student have? Do they all have the same number of grades?
 # how can we acces to the fist student grades:
-print(students[0]["grades"])
+students[0]["grades"]
 
 # now lets print each grades for each student (this is only yo show how to access)
 for student in students:
-    print(student['grades'])
+    student['grades']
    
 
 # grades are a list. so we can use len() to get how many grades a student has
@@ -193,7 +216,7 @@ for student in students:
 
 # 5.What is each student's grade average?
 # how can we acces to the fist student grades:
-print(students[0]["grades"])
+students[0]["grades"]
 
 # "grades" is  a list. calculate avg = sum of grades / how many grades.
 # sum (student["grades"]) / len(student["grades"])
@@ -281,7 +304,7 @@ for student in students:
         else:
             dark +=1
        
-##  I create a list of diccionaries  with the information. but this was is long
+##  I create a list of diccionaries  with the information. but this wa is long
 """
 pref = []  
 pref =[
@@ -319,7 +342,6 @@ elif  med > dark > light:
 else:
     print("The most frequent coffee preference for data science students is:  Light")
 
-#print("The average number of pets for students in Data Science is: ", average)
 
 x=0
 no_pets = 0
@@ -405,8 +427,6 @@ for student in students:
     if student["coffee_preference"] == "dark":
         grades += student["grades"]
 aver_range = max(grades) - min(grades)
-print(max(grades))
-print(min(grades))
 print("The average range for dark coffee drinkers is:", aver_range)
 
 # 17. What is the average number of pets for medium coffee drinkers?
@@ -417,27 +437,67 @@ for student in students:
     if student["coffee_preference"] == "medium":
         x = len(student["pets"])
         pets.append(x)
-print("************************************")
-print("   ")
+
 print("17. The average number of pets for medium coffee drinkers is:", sum(pets) / len(pets))
 
 # 18. What is the most common type of pet for web development students?
 
-from collections import Counter
-"""
-Counter(words).most_common(10)
+# resolving just for one student
+students[0]["pets"]
 
+
+
+
+# list all the dicc of pets only for web development student
+p_list = []
 for student in students:
     if student["course"] == "web development":
-        Counter(student["pets"])
-"""
+        for pet in student["pets"]:
+            p_list.append(pet)
+               
+# list only the names of the pets
+new_list=[]
+for l in p_list:
+    new_list.append(l["species"])
+# makes a new dicc of the counts of each pet
+p_counts ={}
+for p in new_list:
+    if p not in p_counts.keys():
+        p_counts[p] = 1
+    else:
+        p_counts[p] = p_counts[p] + 1
+
+# get the key that has  the max counts
+for k,v in p_counts.items():
+    if v == max(p_counts.values()):
+        common_pet = k
+print("the most common type of pet for web development students: ", common_pet)
+
 # 19. What is the average name length?
 len_list = []
 for student in students:
     len_name = len(student["student"])
     len_list.append(len_name)
-print(len_list)
 
-print("The")
+
+print("The average name length", sum(len_list) / len(len_list) )
 
 # 20. What is the highest pet age for light coffee drinkers?
+# resolvig for one student
+students[0]["pets"]
+students[0]["coffee_preference"]
+#make a list og all pets (diccionries) with the condition student["coffee_preference"] == "light"
+light_pets_list =[]
+for student in students:
+    if student["coffee_preference"] == "light":
+        for pet in student["pets"]:
+            light_pets_list.append(pet)
+
+max_age_pet={}
+max_age = 0
+for pet in light_pets_list:
+    if int(pet["age"]) > max_age:
+        max_age = int(pet["age"])
+        max_age_pet = pet
+print("the highest pet age for light coffee drinkers is: ", max_age_pet["age"])
+print(" which is a ", max_age_pet["species"] )
